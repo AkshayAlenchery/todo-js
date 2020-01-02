@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #f7f7f7;
+}
+
+#logo {
+  text-align: center;
+  margin-top: 50px;
+  color: #3f3844;
+}
+
+#container {
+  width: 1200px;
+  display: flex;
+  margin: 50px auto;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+#list-container {
+  width: 35%;
+  background: #fff;
+  border: 1px solid #edf2f7;
+  padding: 20px;
+}
+
+#todo-container {
+  width: 60%;
+  background: #fff;
+  border: 1px solid #edf2f7;
+}
+
+#list-add-form {
+  display: flex;
+}
+
+#list-add-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #edf2f7;
+}
+
+#show-list-container {
+  margin-top: 20px;
+}
+
+.list {
+  display: flex;
+  height: 40px;
+  justify-content: space-around;
+}
+
+.list:hover {
+  background: #edf2f7;
+}
+
+.list span:first-child {
+  width: 90%;
+  cursor: pointer;
+  align-self: center;
+  /* background: red; */
+}
+
+.list span:last-child {
+  width: 5%;
+  cursor: pointer;
+  align-self: center;
+  /* background: green; */
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+.error::-webkit-input-placeholder {
+  color: red;
+}
+
+#todo-add-form {
+  display: flex;
+  padding: 15px;
+}
+
+#todo-add-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #edf2f7;
+}
+
+#todo-header {
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+#todo-header span:first-child {
+  width: 90%;
+  align-self: center;
+  font-weight: bold;
+  color: #3f3844;
+  font-size: 1.2em;
+}
+
+#todo-header span:last-child {
+  align-self: center;
+  color: #3f3844;
+  font-size: 1.2em;
+}
+
+#todo-list {
+  padding: 15px;
+}
