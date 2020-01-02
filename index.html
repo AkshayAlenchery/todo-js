@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.css"
+      integrity="sha256-lWpJZLAHZOCURVO4tz/qd18kGxO18N90hFgDF49utEg="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1 id="logo">Todo App</h1>
+    <div id="container">
+      <div id="list-container">
+        <div id="list-add-form">
+          <input type="text" name="list-add" id="list-add" placeholder="Create a new list" />
+        </div>
+        <div id="show-list-container"></div>
+      </div>
+      <div id="todo-container" class="show">
+        <div id="todo-header">
+          <span></span>
+          <span class="mdi mdi-close-box"></span>
+        </div>
+        <div id="todo-add-form">
+          <input type="text" name="todo-add" id="todo-add" placeholder="Add a new todo" />
+        </div>
+        <div id="todo-list"></div>
+      </div>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
