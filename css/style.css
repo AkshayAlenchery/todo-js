@@ -60,6 +60,8 @@ body {
   width: 90%;
   cursor: pointer;
   align-self: center;
+  color: #3f3844;
+  font-weight: 500;
   /* background: red; */
 }
 
@@ -68,6 +70,10 @@ body {
   cursor: pointer;
   align-self: center;
   /* background: green; */
+}
+
+.list .mdi {
+  font-size: 1.2em;
 }
 
 .show {
@@ -119,5 +125,94 @@ body {
 }
 
 #todo-list {
-  padding: 15px;
+  padding: 0 15px 10px 15px;
+  color: #3f3844;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  align-items: flex-start;
+}
+
+.todo div {
+  position: relative;
+}
+
+.todo div:nth-child(2) {
+  width: 60%;
+}
+
+.delete {
+  border: 1px solid #ee6352;
+  color: #ee6352;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.todo .mdi {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.schedule {
+  border: 1px solid #59cd90;
+  color: #59cd90;
+  padding: 2px;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.note {
+  border: 1px solid #3fa7d6;
+  color: #3fa7d6;
+  padding: 2px;
+  align-self: center;
+  border-radius: 5px;
+}
+
+input[name='schedule-add'] {
+  position: absolute;
+  right: 10px;
+  z-index: 100;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input[name='todo-name'] {
+  width: 100%;
+  padding: 3px;
+}
+
+textarea {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  z-index: 100;
+  padding: 10px;
+  color: #3f3844;
+}
+
+select[name='priority-add'] {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.priority {
+  border: 1px solid #fac05e;
+  color: #fac05e;
+  padding: 2px;
+  align-self: center;
+  border-radius: 5px;
+}
+.edit {
+  border: 1px solid #4357ad;
+  color: #4357ad;
+  padding: 2px;
+  align-self: center;
+  border-radius: 5px;
 }

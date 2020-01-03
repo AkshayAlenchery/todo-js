@@ -23,10 +23,14 @@
         </div>
         <div id="show-list-container"></div>
       </div>
-      <div id="todo-container" class="show">
+      <div id="todo-container" class="hide">
         <div id="todo-header">
           <span></span>
-          <span class="mdi mdi-close-box"></span>
+          <span
+            class="mdi mdi-close-box"
+            style="cursor: pointer;"
+            onclick="hideTodoContainer()"
+          ></span>
         </div>
         <div id="todo-add-form">
           <input type="text" name="todo-add" id="todo-add" placeholder="Add a new todo" />
