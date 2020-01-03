@@ -37,8 +37,13 @@ const completedTodo = (event, todoId, listId) => {
   listDetails.todo[index].completed = ele.checked
   localStorage.setItem(listId, JSON.stringify(listDetails))
   const parentNode = event.currentTarget.parentNode
-  if (ele.checked === true) parentNode.parentNode.style.textDecoration = 'line-through'
-  else parentNode.parentNode.style.textDecoration = 'none'
+  if (ele.checked === true) {
+    parentNode.parentNode.style.textDecoration = 'line-through'
+    parentNode.parentNode.style.color = '#999'
+  } else {
+    parentNode.parentNode.style.textDecoration = 'none'
+    parentNode.parentNode.style.color = '#3f3844'
+  }
 }
 
 const deleteTodo = (event, todoId, listId) => {
@@ -200,7 +205,10 @@ const renderTodo = (todo, listId) => {
   div7.appendChild(span6)
 
   const mainDiv = document.createElement('div')
-  if (todo.completed === true) mainDiv.style.textDecoration = 'line-through'
+  if (todo.completed === true) {
+    mainDiv.style.textDecoration = 'line-through'
+    mainDiv.style.color = '#999'
+  }
   mainDiv.className = 'todo'
   mainDiv.appendChild(div1)
   mainDiv.appendChild(div2)

@@ -147,7 +147,7 @@ body {
 .delete {
   border: 1px solid #ee6352;
   color: #ee6352;
-  padding: 2px;
+  padding: 2px 3px;
   border-radius: 5px;
 }
 
@@ -159,7 +159,7 @@ body {
 .schedule {
   border: 1px solid #59cd90;
   color: #59cd90;
-  padding: 2px;
+  padding: 2px 3px;
   align-self: center;
   border-radius: 5px;
 }
@@ -167,7 +167,7 @@ body {
 .note {
   border: 1px solid #3fa7d6;
   color: #3fa7d6;
-  padding: 2px;
+  padding: 2px 3px;
   align-self: center;
   border-radius: 5px;
 }
@@ -205,14 +205,14 @@ select[name='priority-add'] {
 .priority {
   border: 1px solid #fac05e;
   color: #fac05e;
-  padding: 2px;
+  padding: 2px 3px;
   align-self: center;
   border-radius: 5px;
 }
 .edit {
   border: 1px solid #4357ad;
   color: #4357ad;
-  padding: 2px;
+  padding: 2px 3px;
   align-self: center;
   border-radius: 5px;
 }
