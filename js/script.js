@@ -293,6 +293,7 @@ const resetInput = element => {
 const hideTodoContainer = event => {
   if (todoContainer.classList.contains('show')) {
     todoContainer.classList.remove('show')
+    todoContainer.classList += 'hide'
     console.log(todoContainer)
   }
 }
@@ -312,8 +313,4 @@ listAddInput.addEventListener('keydown', event => {
 todoAddInput.addEventListener('keydown', event => {
   resetInput(todoAddInput)
   if (event.keyCode === 13) addNewTodo()
-})
-
-document.getElementsByClassName('mdi-close-box')[0].addEventListener('click', () => {
-  todoContainer.classList += 'hide'
 })
