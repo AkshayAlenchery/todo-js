@@ -37,7 +37,7 @@ const completedTodo = (event, todoId, listId) => {
   listDetails.todo[index].completed = ele.checked
   localStorage.setItem(listId, JSON.stringify(listDetails))
   const parentNode = event.currentTarget.parentNode
-  if (ele.checked === true) {
+  if (ele.checked) {
     parentNode.parentNode.style.textDecoration = 'line-through'
     parentNode.parentNode.style.color = '#999'
   } else {
@@ -295,7 +295,7 @@ const addNewTodo = event => {
 
 const resetInput = element => {
   element.className = ''
-  element.setAttribute('placeholder', 'Create a new list')
+  element.setAttribute('placeholder', 'Search | Create a new list')
 }
 
 const hideTodoContainer = event => {
@@ -304,6 +304,16 @@ const hideTodoContainer = event => {
     todoContainer.classList += 'hide'
     console.log(todoContainer)
   }
+}
+
+const searchInput = event => {
+  listContainer.innerHTML = ''
+  const listName = listAddInput.value
+  const regex = RegExp(listName)
+  listIds.forEach(id => {
+    const details = JSON.parse(localStorage.getItem(id))
+    if (regex.test(details.listName)) renderList(details)
+  })
 }
 
 //! Load all the lists stored in localstorage
@@ -316,6 +326,7 @@ listIds.forEach(listId => {
 listAddInput.addEventListener('keydown', event => {
   resetInput(listAddInput)
   if (event.keyCode === 13) addNewList()
+  else searchInput(listAddInput)
 })
 
 todoAddInput.addEventListener('keydown', event => {
