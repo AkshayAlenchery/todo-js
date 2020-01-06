@@ -216,3 +216,15 @@ select[name='priority-add'] {
   align-self: center;
   border-radius: 5px;
 }
+
+.high-p {
+  color: #dc3545;
+}
+
+.medium-p {
+  color: #fd7e14;
+}
+
+.low-p {
+  color: #3f3844;
+}

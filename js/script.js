@@ -64,9 +64,9 @@ const scheduleTodo = (event, todoId, listId) => {
   todos[index].scheduled = event.target.value
   listDetails.todo = todos
   localStorage.setItem(listId, JSON.stringify(listDetails))
-  console.log(event)
-  event.target.previousElementSibling.classList = 'schedule'
-  event.target.previousElementSibling.textContent = event.target.value
+  // event.target.previousElementSibling.classList = 'schedule'
+  // event.target.previousElementSibling.textContent = event.target.value
+  sortTodo(listId)
 }
 
 const showNote = event => {
@@ -116,6 +116,38 @@ const updateTodoName = (event, todoId, listId) => {
   }
 }
 
+const renderAllTodos = (listId, ...todos) => {
+  todos.forEach(todo => renderTodo(todo, listId))
+}
+
+const sortTodo = listId => {
+  const listDetails = JSON.parse(localStorage.getItem(listId))
+  const todos = listDetails.todo
+  const high = []
+  const medium = []
+  const low = []
+  todos.forEach(todo => {
+    if (todo.priority === 0) low.push(todo)
+    else if (todo.priority === 1) medium.push(todo)
+    else if (todo.priority === 2) high.push(todo)
+  })
+  high.sort((a, b) => new Date(b.scheduled) - new Date(a.scheduled))
+  medium.sort((a, b) => new Date(b.scheduled) - new Date(a.scheduled))
+  low.sort((a, b) => new Date(b.scheduled) - new Date(a.scheduled))
+  todoList.innerHTML = ''
+  renderAllTodos(listId, ...high, ...medium, ...low)
+}
+
+const setPriority = (event, todoId, listId) => {
+  const listDetails = JSON.parse(localStorage.getItem(listId))
+  const todos = listDetails.todo
+  const index = todos.findIndex(todo => todo.id === todoId)
+  todos[index].priority = parseInt(event.target.value)
+  listDetails.todo = todos
+  localStorage.setItem(listId, JSON.stringify(listDetails))
+  sortTodo(listId)
+}
+
 const renderTodo = (todo, listId) => {
   const div1 = document.createElement('div')
   const checkbox = document.createElement('input')
@@ -129,6 +161,8 @@ const renderTodo = (todo, listId) => {
   const div2 = document.createElement('div')
   const span1 = document.createElement('span')
   span1.textContent = todo.value
+  if (todo.priority === 2) span1.className = 'high-p'
+  else if (todo.priority === 1) span1.className = 'medium-p'
   const input = document.createElement('input')
   input.setAttribute('type', 'text')
   input.setAttribute('name', 'todo-name')
@@ -180,14 +214,16 @@ const renderTodo = (todo, listId) => {
   const select = document.createElement('select')
   select.setAttribute('name', 'priority-add')
   select.setAttribute('id', 'priority-add')
+  select.setAttribute('onchange', 'setPriority(event, ' + todo.id + ', ' + listId + ')')
   const options = ['Low', 'Medium', 'High']
   options.forEach((value, index) => {
     const option = document.createElement('option')
     option.setAttribute('value', index)
+    if (todo.priority == index) option.setAttribute('selected', 'true')
     option.textContent = value
     select.appendChild(option)
   })
-  select.className = 'hide'
+  // select.className = 'hide'
   div5.appendChild(select)
 
   const div6 = document.createElement('div')
@@ -237,8 +273,9 @@ const showTodo = (event, listId) => {
     // todoList.style.textAlign = 'center'
     // todoList.appendChild(span)
   } else {
-    const todos = listDetails.todo
-    todos.forEach(todo => renderTodo(todo, listId))
+    // const todos = listDetails.todo
+    // todos.forEach(todo => renderTodo(todo, listId))
+    sortTodo(listId)
   }
 }
 
