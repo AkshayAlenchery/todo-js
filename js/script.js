@@ -94,6 +94,39 @@ const showTodoEdit = event => {
   input.className = 'show'
 }
 
+const updateList = event => {
+  const span = todoHeader.getElementsByTagName('span')[0]
+  const input = todoHeader.getElementsByTagName('input')[0]
+  if (input.classList.contains('hide')) {
+    span.className = 'hide'
+    input.className = 'show'
+  } else {
+    span.className = 'show'
+    input.className = 'hide'
+  }
+}
+
+const updateListName = event => {
+  event.target.className = 'show'
+  event.target.setAttribute('placeholder', '')
+  if (event.keyCode === 13) {
+    if (event.target.value === '') {
+      event.target.className = 'error'
+      event.target.setAttribute('placeholder', 'Please enter a list name')
+    } else {
+      const listDetails = JSON.parse(localStorage.getItem(event.target.getAttribute('list-id')))
+      listDetails.listName = event.target.value
+      localStorage.setItem(event.target.getAttribute('list-id'), JSON.stringify(listDetails))
+      todoHeader.getElementsByTagName('span')[0].textContent = event.target.value
+      todoHeader.getElementsByTagName('span')[0].className = 'show'
+      event.target.value = ''
+      event.target.className = 'hide'
+      listContainer.innerHTML = ''
+      loadAllLists()
+    }
+  }
+}
+
 const updateTodoName = (event, todoId, listId) => {
   event.target.className = 'show'
   event.target.setAttribute('placeholder', '')
@@ -263,6 +296,8 @@ const showTodo = (event, listId) => {
   }
   const listDetails = JSON.parse(localStorage.getItem(listId))
   todoHeader.getElementsByTagName('span')[0].textContent = listDetails.listName
+  todoHeader.getElementsByTagName('input')[0].value = listDetails.listName
+  todoHeader.getElementsByTagName('input')[0].setAttribute('list-id', listId)
   const attr = document.createAttribute('list-id')
   attr.value = listId
   todoAddInput.setAttributeNode(attr)
@@ -354,9 +389,13 @@ const searchInput = event => {
 }
 
 //! Load all the lists stored in localstorage
-listIds.forEach(listId => {
-  renderList(JSON.parse(localStorage.getItem(listId)))
-})
+const loadAllLists = () => {
+  listIds.forEach(listId => {
+    renderList(JSON.parse(localStorage.getItem(listId)))
+  })
+}
+
+loadAllLists()
 
 //! Event Listeners
 

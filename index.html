@@ -31,6 +31,21 @@
       <div id="todo-container" class="hide">
         <div id="todo-header">
           <span></span>
+          <input
+            type="text"
+            name="list-name-edit"
+            id="list-name-edit"
+            class="hide"
+            list-id=""
+            value=""
+            placeholder="Enter new list name"
+            onkeydown="updateListName(event)"
+          />
+          <span
+            class="mdi mdi-content-save-edit"
+            style="cursor: pointer;"
+            onclick="updateList()"
+          ></span>
           <span
             class="mdi mdi-close-box"
             style="cursor: pointer;"

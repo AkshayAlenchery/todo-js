@@ -110,10 +110,23 @@ body {
   border-bottom: 1px solid #edf2f7;
 }
 
+#todo-header input {
+  width: 85%;
+  padding: 10px;
+  height: 20px;
+  margin-top: 8px;
+}
+
 #todo-header span:first-child {
-  width: 90%;
+  width: 85%;
   align-self: center;
   font-weight: bold;
+  color: #3f3844;
+  font-size: 1.2em;
+}
+
+#todo-header span:nth-child(3) {
+  align-self: center;
   color: #3f3844;
   font-size: 1.2em;
 }
