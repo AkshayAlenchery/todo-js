@@ -16,6 +16,7 @@ const addNewList = event => {
     listAddInput.className = 'error'
     listAddInput.setAttribute('placeholder', 'Please enter a list name')
   } else {
+    loadAllLists()
     const newList = {
       id: listIds.length === 0 ? 1 : listIds[listIds.length - 1] + 1,
       listName: listName,
@@ -315,6 +316,8 @@ const showTodo = (event, listId) => {
 }
 
 const deleteList = (event, listId) => {
+  todoContainer.className = 'hide'
+  todoList.innerHTML = ''
   localStorage.removeItem(listId)
   listIds.splice(
     listIds.findIndex(id => id === listId),
